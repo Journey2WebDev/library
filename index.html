@@ -10,10 +10,61 @@
 </head>
 
 <body>
-  <div class="grid-library">
-    
+
+  <div class="grid-lib">
+    <div class="grid-lib-item">Book 1</div>
+    <div class="grid-lib-item">Book 2</div>
+    <div class="grid-lib-item">Book 3</div>
+    <div class="grid-lib-item">Book 4</div>
+    <div class="grid-lib-item">Book 5</div>
   </div>
 
+  <div class="form-add-book">
+
+    <form action="#" method="get">
+
+      <table>
+        <tr>
+          <td><label for="bookTitle">Title</label></td>
+          <td class="spaceBtwnColumns"></td>
+          <td><input type="text" id="bookTitle" placeholder="Game of Thrones" minlength="2" maxlength="99" required></td>
+        </tr>
+        <tr>
+          <td><label for="bookAuthor">Author</label></td>
+          <td class="spaceBtwnColumns"></td>
+          <td><input type="text" id="bookAuthor" placeholder="George R. R. Martin" minlength="2" maxlength="50" required></td>
+        </tr>
+        <tr>
+          <td><label for="bookGenre">Genre</label></td>
+          <td class="spaceBtwnColumns"></td>
+          <td>
+            <label for="genreF">Fiction</label>
+            <input type="radio" id="genreF" value="fiction">
+            <label for="genreNF" class="genreNF">Non-Fiction</label>
+            <input type="radio" id="genreNF" value="nonfiction">
+          </td>
+        </tr>
+        <tr>
+          <td><label for="numPages"># pages</label></td>
+          <td class="spaceBtwnColumns"></td>
+          <td><input type="number" id="numPages" min="1" max="2000" placeholder="250"></td>
+        </tr>
+        <tr>
+          <td><label for="haveRead">Have read?</label></td>
+          <td class="spaceBtwnColumns"></td>
+          <td>
+            <label for="haveReadY">Yes</label>
+            <input type="radio" id="haveReadY" value="Y">
+            <label for="haveReadN" class="haveReadN">No</label>
+            <input type="radio" id="haveReadN" value="N">
+          </td>
+        </tr>
+      </table>
+      <button type="submit" class="btn-addBook">Add book to library!</button>
+
+    </form>
+
+  </div>
 
 </body>
 

@@ -2,7 +2,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
 
 /* Remove default padding and margin from all elements */
-*,
 ::before,
 ::after{
   padding: 0px;
@@ -14,9 +13,48 @@
   font-family: 'Roboto', sans-serif;
 }
 
-
-.grid-library{
-  width: 800px;
-  height: 400px;
+/*  */
+/* Book grid */
+/*  */
+.grid-lib{
+  width: 700px;
+  height: 500px;
   border: 1px solid black;
+
+  display: grid;
+  resize: both;
+  overflow: auto;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  grid-template-rows: repeat(2, 200px);
+  gap: 20px;
 }
+
+.grid-lib-item{
+  width: 100%;
+  border: 1px solid tan;
+}
+
+
+/*  */
+/* Form to Add New Book */
+/*  */
+.form-add-book{
+  height: 500px;
+  width: 500px;
+  border: 1px solid green;
+}
+
+table {
+  border-collapse: separate;
+  border-spacing: 0 10px;
+}
+
+.spaceBtwnColumns{
+  padding: 0 15px;
+}
+
+.genreNF, .haveReadN{
+  padding-left: 10px;
+}
+
+
