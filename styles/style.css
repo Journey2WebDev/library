@@ -29,11 +29,55 @@
   gap: 20px;
 }
 
-.grid-lib-item{
-  width: 300px;
-  height: 400px;
+.lib-item{
+  width: 400px;
+  height: 592px;
   border: 1px solid tan;
+  background-image: url("../images/book-cover-blue.png");
+  background-repeat: no-repeat;
+  background-size: cover;
+
+  display: grid;
+    grid-template-columns: 90px repeat(6, 1fr);
+  grid-template-rows: repeat(10, minmax(25px, 80px));
 }
+
+.lib-item-title{
+  grid-column: 2 / 6;
+  grid-row: 2 / 4;
+  border: 1px solid black;
+}
+
+.lib-item-author{
+  grid-column: 2 / 6;
+  grid-row: 5 / 6;
+  border: 1px solid black;
+}
+
+.lib-item-remove{
+  grid-column: 6 / 8;
+  grid-row: 1 / 2;
+  border: 1px solid black;
+}
+
+.lib-item-genre{
+  grid-column: 2 / 4;
+  grid-row: 10 / 11;
+  border: 1px solid black;
+}
+
+.lib-item-read{
+  grid-column: 4 / 6;
+  grid-row: 10 / 11;
+  border: 1px solid black;
+}
+
+.lib-item-pages{
+  grid-column: 6 / 8;
+  grid-row: 10 / 11;
+  border: 1px solid black;
+}
+
 
 
 /*  */
