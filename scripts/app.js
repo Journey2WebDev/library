@@ -12,20 +12,38 @@ function Book(title, author, genre, haveRead, rating, numPages) {
 }
 
 // Example Books
-let book1 = new Book("curious george", "some guy", "children", true, 4.5, 50);
-let book2 = new Book("curious george", "some guy", "children", true, 4.5, 50);
-let book3 = new Book("curious george", "some guy", "children", true, 4.5, 50);
-let book4 = new Book("curious george", "some guy", "children", true, 4.5, 50);
-let book5 = new Book("curious george", "some guy", "children", true, 4.5, 50);
+// let book1 = new Book("curious george", "some guy", "children", true, 4.5, 50);
+// let book2 = new Book("curious george", "some guy", "children", true, 4.5, 50);
+// let book3 = new Book("curious george", "some guy", "children", true, 4.5, 50);
+// let book4 = new Book("curious george", "some guy", "children", true, 4.5, 50);
+// let book5 = new Book("curious george", "some guy", "children", true, 4.5, 50);
 
 function addBookToLibrary() {
   // leet code here
 }
 
 
-// Practice: On-hover events
-let temp1 = document.getElementsByClassName("icon-remove");
-// console.log(temp1);
-// console.log(temp1[0]);
+// Practice: Remove book from library
+let allCloseIcons = document.getElementsByClassName("icon-remove");
 
-// temp1[0].addEventListener("")
+Array.prototype.forEach.call(allCloseIcons, function(icon){
+  icon.addEventListener("click", removeBook);
+});
+
+function removeBook(){
+  document.querySelector(`div[data-id="${this.dataset.id}"]`).remove();
+}
+
+
+// Practice: Change 'Have read?' icon
+let allReadIcons = document.getElementsByClassName("icon-read");
+
+Array.prototype.forEach.call(allReadIcons, function(icon){
+  icon.addEventListener("click", toggleReadIcon);
+});
+
+function toggleReadIcon(){
+
+}
+
+
