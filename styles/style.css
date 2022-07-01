@@ -1,5 +1,7 @@
-/* Font that isn't horrible */
+/* Fonts that are not horrible */
 @import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Handlee&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Arima:wght@600&family=Handlee&display=swap');
 
 /* Remove default padding and margin from all elements */
 ::before,
@@ -17,8 +19,8 @@
 /* Book grid */
 /*  */
 .grid-lib{
-  width: 1000px;
-  height: 1000px;
+  width: 750px;
+  height: 750px;
   border: 1px solid black;
 
   display: grid;
@@ -38,45 +40,98 @@
   background-size: cover;
 
   display: grid;
-    grid-template-columns: 90px repeat(6, 1fr);
+  grid-template-columns: 100px repeat(6, 1fr);
   grid-template-rows: repeat(10, minmax(25px, 80px));
 }
 
-.lib-item-title{
-  grid-column: 2 / 6;
-  grid-row: 2 / 4;
-  border: 1px solid black;
+.lib-item-icon{
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
-.lib-item-author{
-  grid-column: 2 / 6;
+.lib-item-text{
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.text-title{
+  grid-column: 2 / 7;
+  grid-row: 2 / 5;
+
+  color: #104c91;
+  font-family: 'Handlee';
+  font-size: 32px;
+  font-weight: 700;
+}
+
+.text-author{
+  grid-column: 2 / 7;
+  grid-row: 6 / 7;
+
+  color: #efc9af;
+  font-family: 'Arima';
+  font-size: 24px;
+}
+
+.lib-item-graphic{
+  grid-column: 2 / 7;
   grid-row: 5 / 6;
-  border: 1px solid black;
+
+  display: flex;
 }
 
-.lib-item-remove{
-  grid-column: 6 / 8;
+.lib-item-graphic hr{
+  align-self: center;
+  width: 80%;
+  border: 1px solid white;
+  border-radius: 50%;
+  background-color: white;
+}
+
+/* Icon: Remove book from library */
+.icon-remove{
+  grid-column: 7 / 8;
   grid-row: 1 / 2;
-  border: 1px solid black;
 }
 
-.lib-item-genre{
+.icon-remove img{
+  width: 25px;
+}
+
+/* Icon: Fiction / Non-Fiction */
+.icon-genre{
   grid-column: 2 / 4;
   grid-row: 10 / 11;
-  border: 1px solid black;
 }
 
-.lib-item-read{
+.icon-genre img{
+  width: 35px;
+}
+
+/* Icon: Read / Not Read */
+.icon-read{
   grid-column: 4 / 6;
   grid-row: 10 / 11;
-  border: 1px solid black;
 }
 
-.lib-item-pages{
+.icon-read img{
+  width: 35px;
+}
+
+/* Icon: Number of pages */
+.icon-pages{
   grid-column: 6 / 8;
   grid-row: 10 / 11;
-  border: 1px solid black;
+  /* border: 1px solid black; */
 }
+
+.icon-read pages{
+  width: 35px;
+}
+
+
 
 
 
