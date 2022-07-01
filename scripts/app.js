@@ -1,8 +1,8 @@
 
 let myLibrary = [];
 
+// Book object constructor
 function Book(title, author, genre, haveRead, rating, numPages) {
-  // our object constructor
   this.title = title
   this.author = author
   this.genre = genre
@@ -23,4 +23,9 @@ function addBookToLibrary() {
 }
 
 
+// Practice: On-hover events
+let temp1 = document.getElementsByClassName("icon-remove");
+// console.log(temp1);
+// console.log(temp1[0]);
 
+// temp1[0].addEventListener("")

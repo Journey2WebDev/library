@@ -54,37 +54,31 @@ table {
   grid-column: 2 / 3;
   height: 100vh;
 
-  /* border: 1px solid black; */
-
   display: grid;
-  /* resize: both; */
-  /* overflow: auto; */
-  /* grid-template-columns: repeat(auto-fit, minmax(425px, 1fr)); */
   grid-template-columns: repeat(auto-fit, min(425px));
   grid-template-rows: repeat(autofit);
   gap: 10px 10px;
 }
 
-.lib-item{
+.lib-book{
   width: 400px;
   height: 600px;
-  /* border: 1px solid tan; */
   background-image: url("../images/book-cover-blue.png");
   background-repeat: no-repeat;
   background-size: cover;
 
   display: grid;
   grid-template-columns: 100px repeat(6, 1fr);
-  grid-template-rows: repeat(10, minmax(25px, 80px));
+  grid-template-rows: repeat(10, 60px);
 }
 
-.lib-item-icon{
+.book-icon{
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
-.lib-item-text{
+.book-text{
   display: flex;
   justify-content: flex-start;
   align-items: center;
@@ -109,14 +103,14 @@ table {
   font-size: 24px;
 }
 
-.lib-item-graphic{
+.book-line{
   grid-column: 2 / 7;
   grid-row: 5 / 6;
 
   display: flex;
 }
 
-.lib-item-graphic hr{
+.book-line hr{
   align-self: center;
   width: 80%;
   border: 1px solid white;
@@ -125,48 +119,51 @@ table {
 }
 
 /* Icon: Remove book from library */
-.icon-remove{
+.icon-remove-div{
   grid-column: 7 / 8;
   grid-row: 1 / 2;
 }
 
-.icon-remove img{
+.icon-remove{
   width: 25px;
+  transition: transform 0.25s;
 }
 
+.icon-remove:hover{
+  transform: scale(1.25);
+}
+
+
 /* Icon: Fiction / Non-Fiction */
-.icon-genre{
+.icon-genre-div{
   grid-column: 2 / 4;
   grid-row: 10 / 11;
 }
 
-.icon-genre img{
+.icon-genre{
   width: 35px;
 }
 
 /* Icon: Read / Not Read */
-.icon-read{
+.icon-read-div{
   grid-column: 4 / 6;
   grid-row: 10 / 11;
 }
 
-.icon-read img{
+.icon-read{
   width: 35px;
+  transition: transform 0.25s;
+}
+
+.icon-read:hover{
+  transform: scale(1.25);
 }
 
 /* Icon: Number of pages */
-.icon-pages{
+.icon-pages-div{
   grid-column: 6 / 8;
   grid-row: 10 / 11;
-  /* border: 1px solid black; */
 }
-
-.icon-read pages{
-  width: 35px;
-}
-
-
-
 
 
 
