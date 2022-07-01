@@ -16,25 +16,59 @@
 }
 
 /*  */
+/* Main Grid */
+/*  */
+.grid-main{
+  display:grid;
+  grid-template-columns: 400px 1fr;
+}
+
+
+/*  */
+/* Form to Add New Book */
+/*  */
+.form-add-book{
+  grid-column: 1 / 2;
+  height: 100vh;
+
+  border-right: 1px solid green;
+}
+
+table {
+  border-collapse: separate;
+  border-spacing: 0 10px;
+}
+
+.spaceBtwnColumns{
+  padding: 0 15px;
+}
+
+.genreNF, .haveReadN{
+  padding-left: 10px;
+}
+
+/*  */
 /* Book grid */
 /*  */
 .grid-lib{
-  width: 750px;
-  height: 750px;
-  border: 1px solid black;
+  grid-column: 2 / 3;
+  height: 100vh;
+
+  /* border: 1px solid black; */
 
   display: grid;
-  resize: both;
-  overflow: auto;
-  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-  grid-template-rows: repeat(2, 200px);
-  gap: 20px;
+  /* resize: both; */
+  /* overflow: auto; */
+  /* grid-template-columns: repeat(auto-fit, minmax(425px, 1fr)); */
+  grid-template-columns: repeat(auto-fit, min(425px));
+  grid-template-rows: repeat(autofit);
+  gap: 10px 10px;
 }
 
 .lib-item{
   width: 400px;
-  height: 592px;
-  border: 1px solid tan;
+  height: 600px;
+  /* border: 1px solid tan; */
   background-image: url("../images/book-cover-blue.png");
   background-repeat: no-repeat;
   background-size: cover;
@@ -135,26 +169,6 @@
 
 
 
-/*  */
-/* Form to Add New Book */
-/*  */
-.form-add-book{
-  height: 500px;
-  width: 500px;
-  border: 1px solid green;
-}
 
-table {
-  border-collapse: separate;
-  border-spacing: 0 10px;
-}
-
-.spaceBtwnColumns{
-  padding: 0 15px;
-}
-
-.genreNF, .haveReadN{
-  padding-left: 10px;
-}
 
 
