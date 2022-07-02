@@ -43,7 +43,13 @@ Array.prototype.forEach.call(allReadIcons, function(icon){
 });
 
 function toggleReadIcon(){
+  let pattern = /have-read.png$/;
 
+  if(this.src.search(pattern) >= 0){
+    this.src = "./images/have-not-read.png";
+  } else {
+    this.src = "./images/have-read.png";
+  }
 }
 
 
