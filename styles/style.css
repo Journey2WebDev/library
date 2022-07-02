@@ -27,6 +27,10 @@
 /*  */
 /* Form to Add New Book */
 /*  */
+#main-form{
+  display: none;
+}
+
 .form-add-book{
   grid-column: 1 / 2;
   height: 100vh;
@@ -143,6 +147,7 @@ table {
 .icon-genre{
   width: 35px;
 }
+
 
 /* Icon: Read / Not Read */
 .icon-read-div{

@@ -53,3 +53,11 @@ function toggleReadIcon(){
 }
 
 
+// Practice: Onclick event for 'add new book' btn
+let newBookBtn = document.getElementById("btn-newBookForm");
+newBookBtn.addEventListener("click", showForm);
+
+function showForm(){
+  document.getElementById("main-form").style.display = "block";
+}
+
