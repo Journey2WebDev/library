@@ -27,8 +27,14 @@
 /*  */
 /* Form to Add New Book */
 /*  */
-#main-form{
+/* #main-form{
   display: none;
+} */
+
+#main-form{
+  visibility: hidden;
+  opacity: 0;
+  transition: visibility 0s, opacity 0.5s linear;
 }
 
 .form-add-book{

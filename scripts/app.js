@@ -57,7 +57,11 @@ function toggleReadIcon(){
 let newBookBtn = document.getElementById("btn-newBookForm");
 newBookBtn.addEventListener("click", showForm);
 
-function showForm(){
-  document.getElementById("main-form").style.display = "block";
-}
+// function showForm(){
+//   document.getElementById("main-form").style.display = "block";
+// }
 
+function showForm(){
+  document.getElementById("main-form").style.visibility = "visible";
+  document.getElementById("main-form").style.opacity = "1";
+}
