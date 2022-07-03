@@ -54,7 +54,7 @@ function toggleReadIcon(){
 
 
 // Practice: Onclick event for 'add new book' btn
-let newBookBtn = document.getElementById("btn-newBookForm");
+let newBookBtn = document.getElementById("btn-createForm");
 newBookBtn.addEventListener("click", showForm);
 
 // function showForm(){

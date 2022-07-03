@@ -27,14 +27,40 @@
 /*  */
 /* Form to Add New Book */
 /*  */
-/* #main-form{
-  display: none;
-} */
+
+.div-createForm{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#btn-createForm{
+  margin: 15px;
+  border: none;
+  border-radius: 25%;
+  width: 150px;
+  height: 50px;
+  font-size: 1rem;
+  font-weight: 700;
+  background-color: rgb(211, 211, 211);
+  box-shadow: 2px 1px 2px rgb(70, 70, 70);
+}
+
+#btn-createForm:active{
+  box-shadow: 0 0 0 lightgray;
+  margin: 16px 0 14px 0;
+}
 
 #main-form{
   visibility: hidden;
   opacity: 0;
   transition: visibility 0s, opacity 0.5s linear;
+  margin: 15px;
+}
+
+.hrForm{
+  width: 80%;
+  margin: auto;
 }
 
 .form-add-book{
