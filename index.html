@@ -9,18 +9,18 @@
   <script src="./scripts/app.js" defer></script>
 </head>
 
-<body data-root="${rootContext}">
+<body">
 
 <div class="grid-main">
 
   <!-- ADD BOOK FORM -->
   <div class="form-add-book">
 
-    <div class="div-createForm"><button id="btn-createForm">Add new Book</button></div>
+    <div class="div-createForm"><button id="btn-createForm">Create Book</button></div>
     
     <hr class="hrForm">
 
-    <form action="#" method="get" id="main-form">
+    <form action="#" method="get" id="main-form" onsubmit="return false">
       <table>
         <tr>
           <td><label for="bookTitle">Title</label></td>
@@ -37,9 +37,9 @@
           <td class="spaceBtwnColumns"></td>
           <td>
             <label for="genreF">Fiction</label>
-            <input type="radio" id="genreF" value="fiction">
+            <input name="bookGenre" type="radio" id="genreF" value="fiction">
             <label for="genreNF" class="genreNF">Non-Fiction</label>
-            <input type="radio" id="genreNF" value="nonfiction">
+            <input name="bookGenre" type="radio" id="genreNF" value="nonfiction">
           </td>
         </tr>
         <tr>
@@ -52,24 +52,26 @@
           <td class="spaceBtwnColumns"></td>
           <td>
             <label for="haveReadY">Yes</label>
-            <input type="radio" id="haveReadY" value="Y">
+            <input name="haveRead" type="radio" id="haveReadY" value="Y">
             <label for="haveReadN" class="haveReadN">No</label>
-            <input type="radio" id="haveReadN" value="N">
+            <input name="haveRead" type="radio" id="haveReadN" value="N">
           </td>
         </tr>
       </table>
 
-      <button type="submit" class="btn-updateLibrary">Add to your library!</button>
+      <button type="submit" class="btn-updateLibrary" id="btn-addToLibrary">Add to your library!</button>
 
     </form>
+
     <hr class="hrForm">
+
   </div>
 
   <!-- LIBRARY -->
   <div class="grid-lib">
 
     <!-- Exa Book 1 -->
-    <div class="lib-book" data-id="book1">
+    <!-- <div class="lib-book" data-id="book1">
       <div class="book-icon icon-remove-div">
         <img src="./images/close-circle-black.png" alt="black circle with white x" class="icon-remove" data-id="book1" title="Remove from library">
       </div>
@@ -83,10 +85,10 @@
         <img src="./images/have-read.png" alt="book with checkmark in lower-right" class="icon-read" title="Read it!">
       </div>
       <div class="book-icon icon-pages-div">270 pgs</div>
-    </div>
+    </div> -->
 
     <!-- Exa Book 2 -->
-    <div class="lib-book" data-id="book2">
+    <!-- <div class="lib-book" data-id="book2">
       <div class="book-icon icon-remove-div">
         <img src="./images/close-circle-black.png" alt="black circle with white x" class="icon-remove" data-id="book2" title="Remove from library">
       </div>
@@ -100,8 +102,7 @@
         <img src="./images/have-read.png" alt="book with checkmark in lower-right" class="icon-read" title="Read it!">
       </div>
       <div class="book-icon icon-pages-div">270 pgs</div>
-    </div>
-
+    </div> -->
 
     <!-- Exa Book 3 -->
 
