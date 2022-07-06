@@ -1,19 +1,55 @@
 let myLibrary = [];
+let bookCount = 0;
 
 // Book object generator
-function Book(title, author, genre, numPages, haveRead, index) {
+function Book(title, author, genre, numPages, haveRead) {
   this.title = title
   this.author = author
   this.genre = genre
   this.numPages = numPages
   this.haveRead = haveRead
-  this.index = index
+}
+
+// Button: 'Click here to start!' => make form appear
+let showFormBtn = document.getElementById("btn-createForm");
+showFormBtn.addEventListener("click", showForm);
+
+function showForm(){
+  document.getElementById("main-form").style.visibility = "visible";
+  document.getElementById("main-form").style.opacity = "1";
+}
+
+// Button: 'Create Book' => Add book to RHS
+let addToLibraryBtn = document.getElementById("btn-addToLibrary");
+addToLibraryBtn.addEventListener("click", updateLibrary);
+
+function updateLibrary(){
+  // Check if form completely filled out...
+
+
+  // Increment bookCount; to be used in data-id attribute
+  bookCount++
+
+  // Add form data to Book object instance
+  formDataToBookInstance();
+
+  // Loop over myLibrary array of Book object instances
+
+  // Pass each myLibrary array item through drawBook()
+  // This draws DOM elements for book image on RHS, using values from obj instance
+  drawBook(myLibrary[myLibrary.length - 1]);
+
+  // Icon: Remove book from library
+  closeIcon();
+
+  // Icon: Toggle 'Have read' / 'Have not read'
+  readIcon();
 }
 
 function drawBook(newBook){
   let divMain = document.createElement("div");
   divMain.classList.add("lib-book");
-  divMain.setAttribute("data-id", "book1");
+  divMain.setAttribute("data-id", "book" + newBook.index);
   
   // Icon: Remove book
   let divIconRemove = document.createElement("div");
@@ -23,7 +59,7 @@ function drawBook(newBook){
   imgIconRemove.setAttribute("src", "./images/close-circle-black.png");
   imgIconRemove.setAttribute("alt", "black circle with white x");
   imgIconRemove.classList.add("icon-remove");
-  imgIconRemove.setAttribute("data-id", "book1");
+  imgIconRemove.setAttribute("data-id", "book" + newBook.index);
   imgIconRemove.setAttribute("title", "Remove from library");
   
   divIconRemove.appendChild(imgIconRemove);
@@ -72,7 +108,6 @@ function drawBook(newBook){
   let divIconPages = document.createElement("div");
   divIconPages.classList.add("book-icon", "icon-pages-div");
   divIconPages.textContent = newBook.numPages + " pgs";
-   
   
   // Append children to divMain
   divMain.appendChild(divIconRemove);
@@ -85,35 +120,9 @@ function drawBook(newBook){
    
   let gridLib = document.getElementsByClassName("grid-lib")[0];
   gridLib.appendChild(divMain);
+  
+  console.log(myLibrary);
 }
-
-// Button: 'Click here to start!' => make form appear
-let showFormBtn = document.getElementById("btn-createForm");
-showFormBtn.addEventListener("click", showForm);
-
-function showForm(){
-  document.getElementById("main-form").style.visibility = "visible";
-  document.getElementById("main-form").style.opacity = "1";
-}
-
-
-// Button: 'Create Book' => Add book to RHS
-let addToLibraryBtn = document.getElementById("btn-addToLibrary");
-addToLibraryBtn.addEventListener("click", updateLibrary);
-
-function updateLibrary(){
-  // Check if form completely filled out...
-
-  // Add form data to Book object instance
-  formDataToBookInstance();
-
-  // Loop over myLibrary array of Book object instances
-
-  // Pass each myLibrary array item through drawBook()
-  // This draws DOM elements for book image on RHS, using values from obj instance
-  drawBook(myLibrary[myLibrary.length - 1]);  
-}
-
 
 function formDataToBookInstance(){
   newBook = new Book();
@@ -123,47 +132,42 @@ function formDataToBookInstance(){
   document.getElementById("genreF").checked === true ? newBook.genre = document.getElementById("genreF").value : newBook.genre = document.getElementById("genreNF").value;
   newBook.numPages = document.getElementById("numPages").value;
   document.getElementById("haveReadY").checked === true ? newBook.haveRead = document.getElementById("haveReadY").value : newBook.haveRead = document.getElementById("haveReadN").value;
-  
+  newBook.index = bookCount;
+
   myLibrary.push(newBook);
 }
 
 
+function readIcon(){
+  let allReadIcons = document.getElementsByClassName("icon-read");
 
-
-
-
-
-
-
-
-
-
-// Icon: Toggle 'Have read' / 'Have not read'
-let allReadIcons = document.getElementsByClassName("icon-read");
-
-Array.prototype.forEach.call(allReadIcons, function(icon){
-  icon.addEventListener("click", toggleReadIcon);
-});
-
-function toggleReadIcon(){
-  let pattern = /have-read.png$/;
-
-  if(this.src.search(pattern) >= 0){
-    this.src = "./images/have-not-read.png";
-  } else {
-    this.src = "./images/have-read.png";
+  Array.prototype.forEach.call(allReadIcons, function(icon){
+    icon.addEventListener("click", toggleReadIcon);
+  });
+  
+  function toggleReadIcon(){
+    let pattern = /have-read.png$/;
+  
+    if(this.src.search(pattern) >= 0){
+      this.src = "./images/have-not-read.png";
+    } else {
+      this.src = "./images/have-read.png";
+    }
   }
 }
 
 
+function closeIcon(){
+  let allCloseIcons = document.getElementsByClassName("icon-remove");
+  console.log(allCloseIcons);
 
-// Icon: Remove book from library
-let allCloseIcons = document.getElementsByClassName("icon-remove");
+  Array.prototype.forEach.call(allCloseIcons, function(icon){
+    icon.addEventListener("click", removeBook);
+    console.log("Inside on-click for close btn fn");
+  });
 
-Array.prototype.forEach.call(allCloseIcons, function(icon){
-  icon.addEventListener("click", removeBook);
-});
-
-function removeBook(){
-  document.querySelector(`div[data-id="${this.dataset.id}"]`).remove();
+  function removeBook(){
+    document.querySelector(`div[data-id="${this.dataset.id}"]`).remove();
+  }
 }
+
