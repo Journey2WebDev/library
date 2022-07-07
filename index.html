@@ -20,46 +20,51 @@
     
     <hr class="hrForm">
 
-    <form action="#" method="get" id="main-form" onsubmit="return false">
+    <!-- <form action="#" method="get" id="main-form" onsubmit="return false"> -->
+    <!-- <form action="#" method="post" id="main-form" onsubmit="submitFunction();"> -->
+    <form action="#" method="post" id="main-form" novalidate>
       <table>
         <tr>
           <td><label for="bookTitle">Title</label></td>
           <td class="spaceBtwnColumns"></td>
-          <td><input type="text" id="bookTitle" placeholder="Game of Thrones" minlength="2" maxlength="99" required></td>
+          <td><input id="bookTitle" type="text" placeholder="Game of Thrones" minlength="2" maxlength="50" required></td>
         </tr>
         <tr>
           <td><label for="bookAuthor">Author</label></td>
           <td class="spaceBtwnColumns"></td>
-          <td><input type="text" id="bookAuthor" placeholder="George R. R. Martin" minlength="2" maxlength="50" required></td>
+          <td><input id="bookAuthor" type="text" placeholder="George R. R. Martin" minlength="2" maxlength="50" required></td>
         </tr>
         <tr>
           <td><label for="bookGenre">Genre</label></td>
           <td class="spaceBtwnColumns"></td>
           <td>
             <label for="genreF">Fiction</label>
-            <input name="bookGenre" type="radio" id="genreF" value="fiction">
+            <input id="genreF" name="bookGenre" type="radio" value="fiction" required>
             <label for="genreNF" class="genreNF">Nonfiction</label>
-            <input name="bookGenre" type="radio" id="genreNF" value="nonfiction">
+            <input id="genreNF" name="bookGenre" type="radio" value="nonfiction">
           </td>
         </tr>
         <tr>
           <td><label for="numPages"># pages</label></td>
           <td class="spaceBtwnColumns"></td>
-          <td><input type="number" id="numPages" min="1" max="2000" placeholder="1088"></td>
+          <td><input id="numPages" type="number" min="1" placeholder="1088" required></td>
         </tr>
         <tr>
           <td><label for="haveRead">Have read?</label></td>
           <td class="spaceBtwnColumns"></td>
           <td>
             <label for="haveReadY">Yes</label>
-            <input name="haveRead" type="radio" id="haveReadY" value="have-read">
+            <input id="haveReadY" name="haveRead" type="radio" value="have-read" required>
             <label for="haveReadN" class="haveReadN">No</label>
-            <input name="haveRead" type="radio" id="haveReadN" value="have-not-read">
+            <input id="haveReadN" name="haveRead" type="radio" value="have-not-read">
           </td>
+        </tr>
+        <tr>
+          <td colspan="2"><em>- All fields are required.</em></td>
         </tr>
       </table>
 
-      <button type="submit" class="btn-updateLibrary" id="btn-addToLibrary">Create Book</button>
+      <button type="submit" class="btn-updateLibrary" id="btn-createBook">Create Book</button>
 
     </form>
 
@@ -86,26 +91,6 @@
       </div>
       <div class="book-icon icon-pages-div">270 pgs</div>
     </div> -->
-
-    <!-- Exa Book 2 -->
-    <!-- <div class="lib-book" data-id="book2">
-      <div class="book-icon icon-remove-div">
-        <img src="./images/close-circle-black.png" alt="black circle with white x" class="icon-remove" data-id="book2" title="Remove from library">
-      </div>
-      <div class="book-text text-title">Game of Thrones: A Song of Ice and Fire</div>
-      <div class="book-text text-author">George R. R. Martin</div>
-      <div class="book-line"><hr></div>
-      <div class="book-icon icon-genre-div">
-        <img src="./images/fiction.png" alt="head of stereotypical alien" class="icon-genre" title="Fiction">
-      </div>
-      <div class="book-icon icon-read-div">
-        <img src="./images/have-read.png" alt="book with checkmark in lower-right" class="icon-read" title="Read it!">
-      </div>
-      <div class="book-icon icon-pages-div">270 pgs</div>
-    </div> -->
-
-    <!-- Exa Book 3 -->
-
 
   </div>
 

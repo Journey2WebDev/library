@@ -20,13 +20,45 @@ function showForm(){
 }
 
 // Button: 'Create Book' => Add book to RHS
-let addToLibraryBtn = document.getElementById("btn-addToLibrary");
-addToLibraryBtn.addEventListener("click", updateLibrary);
+let createBookBtn = document.getElementById("btn-createBook");
+createBookBtn.addEventListener("click", checkFormValidation);
+
+function checkFormValidation(event){
+  // Prevents page from refreshing when form submits (which erases any book that just appeared in library...)
+  event.preventDefault();
+
+  let formIsValid = true;
+  let bookTitle = document.getElementById("bookTitle");
+  let bookAuthor = document.getElementById("bookAuthor");
+  let genreF = document.getElementById("genreF");
+  let numPages = document.getElementById("numPages");
+  let haveReadY = document.getElementById("haveReadY");
+
+  if(bookTitle.validity.tooShort | bookTitle.validity.tooLong | bookTitle.value == ""){
+    bookTitle.reportValidity();
+    formIsValid = false;
+  }else if(bookAuthor.validity.tooShort | bookAuthor.validity.tooLong | bookAuthor.value == ""){
+    bookAuthor.reportValidity();
+    formIsValid = false;
+  }else if(!genreF.validity.valid){
+    genreF.reportValidity();
+    formIsValid = false;
+  }else if(!numPages.validity.valid){
+    numPages.reportValidity();
+    formIsValid = false;
+  }else if(!haveReadY.validity.valid){
+    haveReadY.reportValidity();
+    formIsValid = false;
+  }
+
+  if(formIsValid){
+    updateLibrary();
+  }
+
+}
 
 function updateLibrary(){
-  // Check if form completely filled out...
-
-
+  
   // Increment bookCount; to be used in data-id attribute
   bookCount++
 
@@ -44,6 +76,19 @@ function updateLibrary(){
 
   // Icon: Toggle 'Have read' / 'Have not read'
   readIcon();
+}
+
+function formDataToBookInstance(){
+  newBook = new Book();
+
+  newBook.title = document.getElementById("bookTitle").value;
+  newBook.author = document.getElementById("bookAuthor").value;
+  document.getElementById("genreF").checked === true ? newBook.genre = document.getElementById("genreF").value : newBook.genre = document.getElementById("genreNF").value;
+  newBook.numPages = document.getElementById("numPages").value;
+  document.getElementById("haveReadY").checked === true ? newBook.haveRead = document.getElementById("haveReadY").value : newBook.haveRead = document.getElementById("haveReadN").value;
+  newBook.index = bookCount;
+
+  myLibrary.push(newBook);
 }
 
 function drawBook(newBook){
@@ -120,23 +165,7 @@ function drawBook(newBook){
    
   let gridLib = document.getElementsByClassName("grid-lib")[0];
   gridLib.appendChild(divMain);
-  
-  console.log(myLibrary);
 }
-
-function formDataToBookInstance(){
-  newBook = new Book();
-
-  newBook.title = document.getElementById("bookTitle").value;
-  newBook.author = document.getElementById("bookAuthor").value;
-  document.getElementById("genreF").checked === true ? newBook.genre = document.getElementById("genreF").value : newBook.genre = document.getElementById("genreNF").value;
-  newBook.numPages = document.getElementById("numPages").value;
-  document.getElementById("haveReadY").checked === true ? newBook.haveRead = document.getElementById("haveReadY").value : newBook.haveRead = document.getElementById("haveReadN").value;
-  newBook.index = bookCount;
-
-  myLibrary.push(newBook);
-}
-
 
 function readIcon(){
   let allReadIcons = document.getElementsByClassName("icon-read");
@@ -159,11 +188,9 @@ function readIcon(){
 
 function closeIcon(){
   let allCloseIcons = document.getElementsByClassName("icon-remove");
-  console.log(allCloseIcons);
 
   Array.prototype.forEach.call(allCloseIcons, function(icon){
     icon.addEventListener("click", removeBook);
-    console.log("Inside on-click for close btn fn");
   });
 
   function removeBook(){
