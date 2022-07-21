@@ -18,6 +18,11 @@
 /*  */
 /* Main Grid */
 /*  */
+
+body{
+  background-color: #333333;
+}
+
 .grid-main{
   display:grid;
   grid-template-columns: 400px 1fr;
@@ -67,12 +72,13 @@
   grid-column: 1 / 2;
   height: 100vh;
 
-  border-right: 1px solid green;
+  border-right: 1px solid gray;
 }
 
 table {
   border-collapse: separate;
   border-spacing: 0 10px;
+  color: #e57255;
 }
 
 .spaceBtwnColumns{
@@ -89,6 +95,9 @@ table {
 .grid-lib{
   grid-column: 2 / 3;
   height: 100vh;
+  background-image: url("../images/bookshelves.png");
+  background-repeat: no-repeat;
+  background-size: cover;
 
   display: grid;
   grid-template-columns: repeat(auto-fit, min(425px));
