@@ -1,5 +1,4 @@
 let myLibrary = [];
-let bookCount = 0;
 
 // Book object generator
 function Book(title, author, genre, numPages, haveRead) {
@@ -8,6 +7,8 @@ function Book(title, author, genre, numPages, haveRead) {
   this.genre = genre
   this.numPages = numPages
   this.haveRead = haveRead
+  this.oldIndex = undefined
+  this.currentIndex = undefined
 }
 
 // Button: 'Click here to start!' => make form appear
@@ -58,11 +59,10 @@ function checkFormValidation(event){
 }
 
 function updateLibrary(){
-  // Increment bookCount; to be used in data-id attribute
-  bookCount++
-
   // Add form data to Book object instance
   formDataToBookInstance();
+
+  updateBookIndices();
 
   // This draws DOM elements for book image on RHS, using values from obj instance
   drawBook(myLibrary[myLibrary.length - 1]);
@@ -76,15 +76,26 @@ function formDataToBookInstance(){
   document.getElementById("genreF").checked === true ? newBook.genre = document.getElementById("genreF").value : newBook.genre = document.getElementById("genreNF").value;
   newBook.numPages = document.getElementById("numPages").value;
   document.getElementById("haveReadY").checked === true ? newBook.haveRead = document.getElementById("haveReadY").value : newBook.haveRead = document.getElementById("haveReadN").value;
-  newBook.index = bookCount;
 
   myLibrary.push(newBook);
 }
 
+function updateBookIndices(){
+  for(let i=0; i < myLibrary.length; i++){
+    myLibrary[i].oldIndex = myLibrary[i].currentIndex;
+    myLibrary[i].currentIndex = i + 1;
+
+    if(myLibrary[i].oldIndex === undefined){
+      myLibrary[i].oldIndex = myLibrary[i].currentIndex;
+    }
+  }
+}
+
+
 function drawBook(newBook){
   let divMain = document.createElement("div");
-  divMain.classList.add("lib-book");
-  divMain.setAttribute("data-id", "book" + newBook.index);
+  divMain.setAttribute("id", "lib-book");
+  divMain.setAttribute("data-id", newBook.currentIndex);
   
   // Icon: Remove book
   let divIconRemove = document.createElement("div");
@@ -93,8 +104,8 @@ function drawBook(newBook){
   let imgIconRemove = document.createElement("img");
   imgIconRemove.setAttribute("src", "./images/close-circle-black.png");
   imgIconRemove.setAttribute("alt", "black circle with white x");
-  imgIconRemove.classList.add("icon-remove");
-  imgIconRemove.setAttribute("data-id", "book" + newBook.index);
+  imgIconRemove.setAttribute("id", "icon-remove");
+  imgIconRemove.setAttribute("data-id", newBook.currentIndex);
   imgIconRemove.setAttribute("title", "Remove from library");
   imgIconRemove.addEventListener("click", removeBook);
 
@@ -140,10 +151,16 @@ function drawBook(newBook){
   // Icon: Number of pages
   let divIconPages = document.createElement("div");
   divIconPages.classList.add("book-icon", "icon-pages-div");
-  if(newBook.numPages <= 9999){
-    divIconPages.textContent = newBook.numPages + " pgs";
+  if(newBook.numPages == 1){
+    divIconPages.textContent = newBook.numPages + " page";
+  }else if(newBook.numPages <= 999){
+    divIconPages.textContent = newBook.numPages + " pages";
+  }else if(newBook.numPages <= 9999){
+    let tempNum = newBook.numPages.toString();
+    tempNum = tempNum.slice(0,1) + "," + tempNum.slice(1);
+    divIconPages.textContent = tempNum + " pages";
   }else{
-    divIconPages.textContent = "10,000+ pgs";
+    divIconPages.textContent = "10,000+ pages";
   }
   
   // Append children to divMain
@@ -160,8 +177,29 @@ function drawBook(newBook){
 }
 
 function removeBook(){
-  document.querySelector(`div[data-id="${this.dataset.id}"]`).remove();
+  let currentBook = document.querySelector(`div[data-id="${this.dataset.id}"]`);
+
+  for(let i=0; i < myLibrary.length; i++){
+    if(myLibrary[i].currentIndex == currentBook.dataset.id){
+      myLibrary.splice(i,1);
+    }
+  }
+
+  currentBook.remove();
+  updateBookIndices();
+  updateDataAttributes();
 }
+
+function updateDataAttributes(){
+  for(let i=0; i < myLibrary.length; i++){
+    let bookOldIndex = myLibrary[i].oldIndex;
+    // Book element
+    document.querySelector(`div[data-id="${bookOldIndex}"`).dataset.id = myLibrary[i].currentIndex;
+    // Remove book icon
+    document.querySelector(`img[data-id="${bookOldIndex}"`).dataset.id = myLibrary[i].currentIndex;
+  }
+}
+
 
 function toggleReadIcon(){
   let pattern = /have-read.png$/;
