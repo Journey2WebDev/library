@@ -58,24 +58,14 @@ function checkFormValidation(event){
 }
 
 function updateLibrary(){
-  
   // Increment bookCount; to be used in data-id attribute
   bookCount++
 
   // Add form data to Book object instance
   formDataToBookInstance();
 
-  // Loop over myLibrary array of Book object instances
-
-  // Pass each myLibrary array item through drawBook()
   // This draws DOM elements for book image on RHS, using values from obj instance
   drawBook(myLibrary[myLibrary.length - 1]);
-
-  // Icon: Remove book from library
-  closeIcon();
-
-  // Icon: Toggle 'Have read' / 'Have not read'
-  readIcon();
 }
 
 function formDataToBookInstance(){
@@ -106,19 +96,18 @@ function drawBook(newBook){
   imgIconRemove.classList.add("icon-remove");
   imgIconRemove.setAttribute("data-id", "book" + newBook.index);
   imgIconRemove.setAttribute("title", "Remove from library");
-  
+  imgIconRemove.addEventListener("click", removeBook);
+
   divIconRemove.appendChild(imgIconRemove);
   
   // Title
   let divTitle = document.createElement("div");
   divTitle.classList.add("book-text", "text-title");
-  // divTitle.textContent = "Test Title from JS";
   divTitle.textContent = newBook.title;
   
   // Author
   let divAuthor = document.createElement("div");
   divAuthor.classList.add("book-text", "text-author");
-  // divAuthor.textContent = "Some Person";
   divAuthor.textContent = newBook.author;
   
   // HR separator
@@ -135,7 +124,6 @@ function drawBook(newBook){
   imgIconGenre.setAttribute("alt", "head of stereotypical alien");
   imgIconGenre.classList.add("icon-genre");
   imgIconGenre.setAttribute("title", "Fiction");
-  
   divIconGenre.appendChild(imgIconGenre);
   
   // Icon: Have (not) read
@@ -146,13 +134,17 @@ function drawBook(newBook){
   imgIconRead.setAttribute("alt", "book with checkmark in lower-right");
   imgIconRead.classList.add("icon-read");
   imgIconRead.setAttribute("title", "Read it!");
-  
+  imgIconRead.addEventListener("click", toggleReadIcon);
   divIconRead.appendChild(imgIconRead);
   
   // Icon: Number of pages
   let divIconPages = document.createElement("div");
   divIconPages.classList.add("book-icon", "icon-pages-div");
-  divIconPages.textContent = newBook.numPages + " pgs";
+  if(newBook.numPages <= 9999){
+    divIconPages.textContent = newBook.numPages + " pgs";
+  }else{
+    divIconPages.textContent = "10,000+ pgs";
+  }
   
   // Append children to divMain
   divMain.appendChild(divIconRemove);
@@ -167,34 +159,16 @@ function drawBook(newBook){
   gridLib.appendChild(divMain);
 }
 
-function readIcon(){
-  let allReadIcons = document.getElementsByClassName("icon-read");
-
-  Array.prototype.forEach.call(allReadIcons, function(icon){
-    icon.addEventListener("click", toggleReadIcon);
-  });
-  
-  function toggleReadIcon(){
-    let pattern = /have-read.png$/;
-  
-    if(this.src.search(pattern) >= 0){
-      this.src = "./images/have-not-read.png";
-    } else {
-      this.src = "./images/have-read.png";
-    }
-  }
+function removeBook(){
+  document.querySelector(`div[data-id="${this.dataset.id}"]`).remove();
 }
 
+function toggleReadIcon(){
+  let pattern = /have-read.png$/;
 
-function closeIcon(){
-  let allCloseIcons = document.getElementsByClassName("icon-remove");
-
-  Array.prototype.forEach.call(allCloseIcons, function(icon){
-    icon.addEventListener("click", removeBook);
-  });
-
-  function removeBook(){
-    document.querySelector(`div[data-id="${this.dataset.id}"]`).remove();
+  if(this.src.search(pattern) >= 0){
+    this.src = "./images/have-not-read.png";
+  } else {
+    this.src = "./images/have-read.png";
   }
 }
-

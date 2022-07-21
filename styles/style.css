@@ -94,6 +94,7 @@ table {
   grid-template-columns: repeat(auto-fit, min(425px));
   grid-template-rows: repeat(autofit);
   gap: 10px 10px;
+  margin: 0 15px 0 15px;
 }
 
 .lib-book{
@@ -106,6 +107,8 @@ table {
   display: grid;
   grid-template-columns: 100px repeat(6, 1fr);
   grid-template-rows: repeat(10, 60px);
+  box-shadow: 4px 2px 4px rgb(70, 70, 70);
+  border-radius: 5px;
 }
 
 .book-icon{
