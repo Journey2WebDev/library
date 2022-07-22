@@ -21,6 +21,10 @@
 
 body{
   background-color: #333333;
+  background-image: url("../images/bookshelves.png");
+  /* background-repeat: no-repeat; */
+  background-size: cover;
+  background-attachment: scroll;
 }
 
 .grid-main{
@@ -95,9 +99,6 @@ table {
 .grid-lib{
   grid-column: 2 / 3;
   height: 100vh;
-  background-image: url("../images/bookshelves.png");
-  background-repeat: no-repeat;
-  background-size: cover;
 
   display: grid;
   grid-template-columns: repeat(auto-fit, min(425px));

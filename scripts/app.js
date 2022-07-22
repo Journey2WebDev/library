@@ -18,6 +18,7 @@ showFormBtn.addEventListener("click", showForm);
 function showForm(){
   document.getElementById("main-form").style.visibility = "visible";
   document.getElementById("main-form").style.opacity = "1";
+  // document.getElementById("main-form").style.backgroundColor = "#333333";
 }
 
 // Button: 'Create Book' => Add book to RHS
@@ -134,7 +135,11 @@ function drawBook(newBook){
   imgIconGenre.setAttribute("src", "./images/" + newBook.genre + ".png");
   imgIconGenre.setAttribute("alt", "head of stereotypical alien");
   imgIconGenre.classList.add("icon-genre");
-  imgIconGenre.setAttribute("title", "Fiction");
+  if(newBook.genre === "fiction"){
+    imgIconGenre.setAttribute("title", "Fiction");
+  }else{
+    imgIconGenre.setAttribute("title", "Non-Fiction");
+  }
   divIconGenre.appendChild(imgIconGenre);
   
   // Icon: Have (not) read
@@ -144,7 +149,11 @@ function drawBook(newBook){
   imgIconRead.setAttribute("src", "./images/" + newBook.haveRead + ".png");
   imgIconRead.setAttribute("alt", "book with checkmark in lower-right");
   imgIconRead.classList.add("icon-read");
-  imgIconRead.setAttribute("title", "Read it!");
+  if(newBook.haveRead === "have-read"){
+    imgIconRead.setAttribute("title", "Read it!");
+  }else{
+    imgIconRead.setAttribute("title", "Have not read...");
+  }
   imgIconRead.addEventListener("click", toggleReadIcon);
   divIconRead.appendChild(imgIconRead);
   
@@ -206,7 +215,9 @@ function toggleReadIcon(){
 
   if(this.src.search(pattern) >= 0){
     this.src = "./images/have-not-read.png";
+    this.title = "Have not read...";
   } else {
     this.src = "./images/have-read.png";
+    this.title = "Read it!";
   }
 }
