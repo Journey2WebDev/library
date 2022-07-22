@@ -60,11 +60,17 @@ body{
   margin: 16px 0 14px 0;
 }
 
+#main-form-background{
+  border-radius: 15px;
+  margin: 10px 10px 10px 0px;
+  display: flow-root;
+}
+
 #main-form{
   visibility: hidden;
   opacity: 0;
-  transition: visibility 0s, opacity 0.5s linear;
-  margin: 15px;
+  transition: visibility 0s, opacity 0.75s linear;
+  margin: 15px 0 15px 15px;
 }
 
 .hrForm{

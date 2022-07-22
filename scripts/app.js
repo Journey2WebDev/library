@@ -18,7 +18,7 @@ showFormBtn.addEventListener("click", showForm);
 function showForm(){
   document.getElementById("main-form").style.visibility = "visible";
   document.getElementById("main-form").style.opacity = "1";
-  // document.getElementById("main-form").style.backgroundColor = "#333333";
+  document.getElementById("main-form-background").style.backgroundColor = "rgba(51,51,51,0.7)";
 }
 
 // Button: 'Create Book' => Add book to RHS

@@ -20,51 +20,53 @@
     
     <hr class="hrForm">
 
-    <form action="#" method="post" id="main-form" novalidate>
-      <table>
-        <tr>
-          <td><label for="bookTitle">Title</label></td>
-          <td class="spaceBtwnColumns"></td>
-          <td><input id="bookTitle" type="text" placeholder="Game of Thrones" minlength="2" maxlength="50" required></td>
-        </tr>
-        <tr>
-          <td><label for="bookAuthor">Author</label></td>
-          <td class="spaceBtwnColumns"></td>
-          <td><input id="bookAuthor" type="text" placeholder="George R. R. Martin" minlength="2" maxlength="50" required></td>
-        </tr>
-        <tr>
-          <td><label for="bookGenre">Genre</label></td>
-          <td class="spaceBtwnColumns"></td>
-          <td>
-            <label for="genreF">Fiction</label>
-            <input id="genreF" name="bookGenre" type="radio" value="fiction" required>
-            <label for="genreNF" class="genreNF">Nonfiction</label>
-            <input id="genreNF" name="bookGenre" type="radio" value="nonfiction">
-          </td>
-        </tr>
-        <tr>
-          <td><label for="numPages"># pages</label></td>
-          <td class="spaceBtwnColumns"></td>
-          <td><input id="numPages" type="number" min="1" placeholder="1088" required></td>
-        </tr>
-        <tr>
-          <td><label for="haveRead">Have read?</label></td>
-          <td class="spaceBtwnColumns"></td>
-          <td>
-            <label for="haveReadY">Yes</label>
-            <input id="haveReadY" name="haveRead" type="radio" value="have-read" required>
-            <label for="haveReadN" class="haveReadN">No</label>
-            <input id="haveReadN" name="haveRead" type="radio" value="have-not-read">
-          </td>
-        </tr>
-        <tr>
-          <td colspan="2"><em>- All fields are required.</em></td>
-        </tr>
-      </table>
+    <div id="main-form-background">
+      <form action="#" method="post" id="main-form" novalidate>
+        <table>
+          <tr>
+            <td><label for="bookTitle">Title</label></td>
+            <td class="spaceBtwnColumns"></td>
+            <td><input id="bookTitle" type="text" placeholder="Game of Thrones" minlength="2" maxlength="50" required></td>
+          </tr>
+          <tr>
+            <td><label for="bookAuthor">Author</label></td>
+            <td class="spaceBtwnColumns"></td>
+            <td><input id="bookAuthor" type="text" placeholder="George R. R. Martin" minlength="2" maxlength="50" required></td>
+          </tr>
+          <tr>
+            <td><label for="bookGenre">Genre</label></td>
+            <td class="spaceBtwnColumns"></td>
+            <td>
+              <label for="genreF">Fiction</label>
+              <input id="genreF" name="bookGenre" type="radio" value="fiction" required>
+              <label for="genreNF" class="genreNF">Nonfiction</label>
+              <input id="genreNF" name="bookGenre" type="radio" value="nonfiction">
+            </td>
+          </tr>
+          <tr>
+            <td><label for="numPages"># pages</label></td>
+            <td class="spaceBtwnColumns"></td>
+            <td><input id="numPages" type="number" min="1" placeholder="1088" required></td>
+          </tr>
+          <tr>
+            <td><label for="haveRead">Have read?</label></td>
+            <td class="spaceBtwnColumns"></td>
+            <td>
+              <label for="haveReadY">Yes</label>
+              <input id="haveReadY" name="haveRead" type="radio" value="have-read" required>
+              <label for="haveReadN" class="haveReadN">No</label>
+              <input id="haveReadN" name="haveRead" type="radio" value="have-not-read">
+            </td>
+          </tr>
+          <tr>
+            <td colspan="2"><em>- All fields are required.</em></td>
+          </tr>
+        </table>
 
-      <button type="submit" class="btn-updateLibrary" id="btn-createBook">Create Book</button>
+        <button type="submit" class="btn-updateLibrary" id="btn-createBook">Create Book</button>
 
-    </form>
+      </form>
+    </div>
 
     <hr class="hrForm">
 
